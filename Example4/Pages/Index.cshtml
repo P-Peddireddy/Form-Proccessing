@@ -1,0 +1,27 @@
+﻿@page "{Time?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Form tính</h1>
+    
+    <form method="post">
+        <div class="row">
+            <div class="col-4"></div>
+            @Html.TextBoxFor(x => x.TimeData.Time, new { type = "date", width = "25%", Value = Model.TimeData.Time })
+            <div class="col-1"></div>
+            @Html.TextBoxFor(x => x.TimeData.Day, new { type = "number", width = "25%", Value = Model.TimeData.Day })
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </form>
+
+    <div class="row mt-3">
+        <div class="col-4"></div>
+        @if (Model.Time.HasValue)
+        {
+            <p>Kết quả là @Model.Time.Value.ToString("dd/MM/yyyy")</p>
+        }
+    </div>
+</div>
